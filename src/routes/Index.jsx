@@ -1,10 +1,27 @@
-import DmgProductsContainer from '../components/DmgInventory/DmgProductsContainer';
-
+import DmgProductsContainer from "../components/DmgInventory/DmgProductsContainer";
+import axios from "axios";
 const Index = (props) => {
+  axios
+    .get(
+      "https://cors-anywhere.herokuapp.com/https://api.bigcommerce.com/stores/4n3dh09e13/v3/catalog/products",
+      {
+        headers: {
+          "X-Auth-Client": "l2mq5ar7kg5fo5vcx8ohtlmdga7426s",
+          "X-Auth-Token": "sfg3gi5tfc4abmzyyz4wpddvoq9opxl",
+        },
+      }
+    )
+    .then((response) => {
+      console.log(response.data);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  
   return (
     <>
-      <DmgProductsContainer/>
-      {/* <div class="px-4 mx-auto sm:px-8">
+      {/* <DmgProductsContainer/> */}
+      {/*  <div class="px-4 mx-auto sm:px-8">
         <div class="py-8">
           <div class="flex flex-row justify-between w-full mb-1 sm:mb-0">
             <h2 class="text-2xl leading-tight">Bigcommerce inventory</h2>
